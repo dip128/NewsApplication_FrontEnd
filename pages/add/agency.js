@@ -1,5 +1,8 @@
 import React, { useState,useEffect } from 'react'
 import NewsService from '../api/newsapi'
+import { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css';
 
 export default function agency() {
 
@@ -32,9 +35,53 @@ export default function agency() {
         console.log(allage)
         if(allage.includes(agency)){
             console.log("Value already in the database")
+              store.addNotification({
+                    title: 'Check Your Input',
+                    message: 'This Agency has been already added',
+                    insert: "top",
+                    type: 'default',                         
+                    container: 'top-right',                
+                    animationIn: ["animated", "fadeIn"],     
+                    animationOut: ["animated", "fadeOut"],   
+                    dismiss: {
+                    duration: 4000
+                    }
+          })
         }
         else{
              NewsService.addAgency(agency,agencyUrl)
+               .then(res =>{
+                  if(res.status===200){
+                console.log("All News Deleted")
+                store.addNotification({
+                    title: 'Added',
+                    message: 'Your Agency has been added in the database the database',
+                    insert: "top",
+                    type: 'success',                         // 'default', 'success', 'info', 'warning'
+                    container: 'top-right',                // where to position the notifications
+                    animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+                    animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+                    dismiss: {
+                    duration: 4000
+                    }
+          })        
+            }
+             })
+             .catch(err =>{
+                 console.log(err)
+                   store.addNotification({
+                    title: 'Oops',
+                    message: 'Sorry! Faced certain issue with the server',
+                    insert: "top",
+                    type: 'warning',                         
+                    container: 'top-right',                
+                    animationIn: ["animated", "fadeIn"],     
+                    animationOut: ["animated", "fadeOut"],   
+                    dismiss: {
+                    duration: 4000
+                    }
+          })
+             })
         }
        
         setagency("")

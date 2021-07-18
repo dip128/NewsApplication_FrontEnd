@@ -8,8 +8,9 @@ export default function Navbar() {
         <Image src="/rupee.png" width={50} height={48} />
         <h1>GETNEWS</h1>
         <ul>
-          <li><Link href="/"><a>Home</a></Link></li>
-          <li><Link href="/guides"><a>Guides</a></Link></li>
+           <li><Link href="/"><a>Home</a></Link></li>
+          <li><Link href="/news"><a>News</a></Link></li>
+          <li><Link href="/add"><a>Admin</a></Link></li>
         </ul>
       </nav>
     </div>

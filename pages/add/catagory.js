@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react'
-import NavbarComps from '../../comps/Navbar'
 import NewsService from '../api/newsapi'
+import { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css';
 
 export default function catagory() {
 
@@ -17,6 +19,7 @@ export default function catagory() {
                 })
                 console.log(cat)
                 setallcat(cat)
+                
             })
             .catch((err)=>console.log(err))
         return () => {
@@ -32,9 +35,54 @@ export default function catagory() {
         console.log(allcat)
         if(allcat.includes(catagory)){
             console.log("Value already in the database")
+              store.addNotification({
+                    title: 'Check Your Input',
+                    message: 'This Catagory has been already added',
+                    insert: "top",
+                    type: 'default',                         
+                    container: 'top-right',                
+                    animationIn: ["animated", "fadeIn"],     
+                    animationOut: ["animated", "fadeOut"],   
+                    dismiss: {
+                    duration: 4000
+                    }
+          })
         }
         else{
              NewsService.addCatagory(catagory)
+             .then(res =>{
+                  if(res.status===200){
+                console.log("All News Deleted")
+                store.addNotification({
+                    title: 'Added',
+                    message: 'Your Catagory has been added in the database the database',
+                    insert: "top",
+                    type: 'success',                         // 'default', 'success', 'info', 'warning'
+                    container: 'top-right',                // where to position the notifications
+                    animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+                    animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+                    dismiss: {
+                    duration: 4000
+                    }
+          })        
+            }
+             })
+             .catch(err =>{
+                 console.log(err)
+                   store.addNotification({
+                    title: 'Oops',
+                    message: 'Sorry! Faced certain issue with the server',
+                    insert: "top",
+                    type: 'warning',                         
+                    container: 'top-right',                
+                    animationIn: ["animated", "fadeIn"],     
+                    animationOut: ["animated", "fadeOut"],   
+                    dismiss: {
+                    duration: 4000
+                    }
+          })
+             })
+             
         }
        
         setcatagory("")

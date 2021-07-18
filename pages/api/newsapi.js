@@ -42,6 +42,10 @@ class NewsService {
         return axios.post(NEWS_API_BASE_URL+"")
     }
 
+    deleteAllNews(){
+        return axios.delete(NEWS_API_BASE_URL+"/news/delete/all")
+    }
+
 }
 
 export default new NewsService();

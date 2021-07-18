@@ -55,3 +55,46 @@ nav li.btn:hover {
 .banner img {
   border-radius: 6px;
 }
+
+.site-footer {
+  background-color: #f2f2f2;
+  padding: 45px 0 20px;
+  font-size: 15px;
+  line-height: 24px;
+  color: #444;
+  position: fixed;
+
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.site-footer a {
+  color: #737373;
+}
+
+.site-footer a:hover {
+  color: #3366cc;
+  text-decoration: none;
+}
+.copyright-text {
+  margin: 0;
+}
+
+.customebutton {
+  background-color: #83294b; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+.customebutton:hover {
+  background-color: #eb2929; /* Green */
+  color: white;
+}
