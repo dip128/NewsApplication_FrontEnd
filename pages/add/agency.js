@@ -4,6 +4,8 @@ import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
 
+
+
 export default function agency() {
 
     const[agency,setagency] = useState("")
@@ -86,6 +88,7 @@ export default function agency() {
        
         setagency("")
         setagencyUrl("")
+        setagechange(" ")
     }
 
     return (
@@ -98,7 +101,7 @@ export default function agency() {
                  <br/> <br/>
                  <input type="text" placeholder="Enter logo image URL" value={agencyUrl} onChange={e => setagencyUrl(e.target.value)} required/>
                  <br/> <br/>
-                <input type='submit'  value='Add Agency'/>
+                <input className="submitbutton" type='submit'  value='Add Agency'/>
             </form>
             
 

@@ -86,6 +86,7 @@ export default function catagory() {
         }
        
         setcatagory("")
+        setcatchange(" ")
     }
 
     return (
@@ -93,9 +94,11 @@ export default function catagory() {
             Add Catagory
              <br/> <br/>
             <form  onSubmit={e => { addCatagory(e)}}>
-                <input type="text" placeholder="Enter Catagory" value={catagory} onChange={e => setcatagory(e.target.value)} required/>
+                <label for="text-input">Catagory</label>
                 <br/> <br/>
-                <input type='submit'  value='Add Catagory'/>
+                <input className="input" id="text-input" type="text" placeholder="Enter Catagory" value={catagory} onChange={e => setcatagory(e.target.value)} required/>
+                <br/> <br/>
+                <input className="submitbutton" type='submit'  value='Add Catagory'/>
             </form>
             
 

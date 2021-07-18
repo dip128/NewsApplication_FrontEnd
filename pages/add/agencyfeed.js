@@ -76,7 +76,7 @@ export default function agencyfeed() {
            
                 <input type="text" placeholder="Add Agency URL" value={feed_url} onChange={e => {setFeedUrl(e.target.value)}} required/>
                  <br/> <br/>
-                <input type='submit'  value='Add URL'/>
+                <input className="submitbutton" type='submit'  value='Add URL'/>
             </form>
             
         </div>
