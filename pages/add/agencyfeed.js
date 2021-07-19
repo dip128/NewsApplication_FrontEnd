@@ -1,5 +1,8 @@
 import React,{useEffect,useState} from 'react'
 import NewsService from '../api/newsapi'
+import { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css';
 
 export default function agencyfeed() {
 
@@ -52,6 +55,37 @@ export default function agencyfeed() {
          console.log(ageid)
          console.log(feed_url)
          NewsService.addAgencyFeed(catid,ageid,feed_url)
+         .then(res =>{
+             if(res.status===200){
+                    store.addNotification({
+                    title: 'Added',
+                    message: 'Your Item has been added in the database the database',
+                    insert: "top",
+                    type: 'success',                         // 'default', 'success', 'info', 'warning'
+                    container: 'top-right',                // where to position the notifications
+                    animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+                    animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+                    dismiss: {
+                    duration: 4000
+                    }
+          }) 
+             }
+         })
+         .catch(err =>{
+             console.log(err)
+                  store.addNotification({
+                    title: 'Oops',
+                    message: 'Sorry! Faced certain issue with the server,Check Inputs and Connections',
+                    insert: "top",
+                    type: 'warning',                         
+                    container: 'top-right',                
+                    animationIn: ["animated", "fadeIn"],     
+                    animationOut: ["animated", "fadeOut"],   
+                    dismiss: {
+                    duration: 4000
+                    }
+          })
+         })
          setageid(0)
          setcatid(0)
          setFeedUrl("")

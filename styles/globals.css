@@ -66,7 +66,7 @@ nav li.btn:hover {
   font-size: 15px;
   line-height: 24px;
   color: #444;
-  position: fixed;
+  position: absolute;
 
   left: 0;
   bottom: 0;

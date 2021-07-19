@@ -9,7 +9,7 @@ import 'animate.css';
 export default function agency() {
 
     const[agency,setagency] = useState("")
-    const[agechange,setagechange] = useState("")
+    const[counter,setcouter] = useState(0);
     const[agencyUrl,setagencyUrl] = useState("")
     const[allage,setallage] = useState([]);
 
@@ -27,12 +27,12 @@ export default function agency() {
         return () => {
             
         }
-    }, [agechange])
+    }, [counter])
 
 
     const addAgency =(e) =>{
         console.log(agency)
-        setagechange(agency)
+        setcouter(counter+1)
         e.preventDefault();
         console.log(allage)
         if(allage.includes(agency)){
@@ -88,7 +88,7 @@ export default function agency() {
        
         setagency("")
         setagencyUrl("")
-        setagechange(" ")
+        
     }
 
     return (

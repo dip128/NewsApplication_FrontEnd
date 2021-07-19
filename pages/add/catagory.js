@@ -7,7 +7,7 @@ import 'animate.css';
 export default function catagory() {
 
     const[catagory,setcatagory] = useState("")
-    const[catchange,setcatchange] = useState("")
+    const[counter,setcouter] = useState(0);
     const[allcat,setallcat] = useState([]);
 
     useEffect(() => {
@@ -25,12 +25,12 @@ export default function catagory() {
         return () => {
             
         }
-    }, [catchange])
+    }, [counter])
 
 
     const addCatagory =(e) =>{
         console.log(catagory)
-        setcatchange(catagory)
+        setcouter(counter+1)
         e.preventDefault();
         console.log(allcat)
         if(allcat.includes(catagory)){
@@ -52,7 +52,7 @@ export default function catagory() {
              NewsService.addCatagory(catagory)
              .then(res =>{
                   if(res.status===200){
-                console.log("All News Deleted")
+                
                 store.addNotification({
                     title: 'Added',
                     message: 'Your Catagory has been added in the database the database',
@@ -86,7 +86,7 @@ export default function catagory() {
         }
        
         setcatagory("")
-        setcatchange(" ")
+        
     }
 
     return (
