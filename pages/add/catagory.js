@@ -91,10 +91,10 @@ export default function catagory() {
 
     return (
         <div className="container">
-            Add Catagory
+            <h1>Add Catagory</h1>
              <br/> <br/>
             <form  onSubmit={e => { addCatagory(e)}}>
-                <label for="text-input">Catagory</label>
+                <label for="text-input">Catagory -</label>
                 <br/> <br/>
                 <input className="input" id="text-input" type="text" placeholder="Enter Catagory" value={catagory} onChange={e => setcatagory(e.target.value)} required/>
                 <br/> <br/>

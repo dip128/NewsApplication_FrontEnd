@@ -93,8 +93,7 @@ export default function agency() {
 
     return (
         <div className="container">
-           
-            Add Agency
+            <h1>Add Agency</h1>
             <br/> <br/>
             <form onSubmit={e => { addAgency(e)}}>
                 <input type="text" placeholder="Enter Agency Name" value={agency} onChange={e => setagency(e.target.value)} required/>

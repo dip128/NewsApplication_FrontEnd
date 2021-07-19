@@ -22,10 +22,13 @@ export default function agencyfeed() {
                 console.log(err)
             })
             .then((res) =>{
-                let cat = res.data.map(item =>{
-                    return {value:item.catagory_id , display:item.catagory_title}
-                })
-                setcats([{value:'',display:'(Select your Catagory)'}].concat(cat))
+                if(res != undefined){
+                        let cat = res.data.map(item =>{
+                        return {value:item.catagory_id , display:item.catagory_title}
+                    })
+                    setcats([{value:'',display:'(Select your Catagory)'}].concat(cat))
+                }
+                
             });
             
         NewsService.getAgencyAll()
@@ -36,11 +39,13 @@ export default function agencyfeed() {
                     console.log(err)
                 }) 
                 .then((res) =>{
+                    if(res != undefined){
                     let age = res.data.map(item =>{
                         return {value:item.agency_id,display:item.agency_name}
                     })
 
                     setagens([{value:'',display:'(Select your Agency)'}].concat(age))
+                }
                 })  
             
         return () => {
@@ -93,7 +98,7 @@ export default function agencyfeed() {
 
     return (
         <div className="container">
-            Add AgencyFeed URL for a Particular Catagory
+            <h1>Add AgencyFeed URL for a Particular Catagory</h1>
             <div style={{color: 'red', marginTop: '5px'}}>
                 {validationError}
                 </div>
