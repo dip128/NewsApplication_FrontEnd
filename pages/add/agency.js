@@ -54,10 +54,10 @@ export default function agency() {
              NewsService.addAgency(agency,agencyUrl)
                .then(res =>{
                   if(res.status===200){
-                console.log("All News Deleted")
+                
                 store.addNotification({
                     title: 'Added',
-                    message: 'Your Agency has been added in the database the database',
+                    message: 'Your Agency has been added in the database',
                     insert: "top",
                     type: 'success',                         // 'default', 'success', 'info', 'warning'
                     container: 'top-right',                // where to position the notifications

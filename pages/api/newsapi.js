@@ -33,13 +33,15 @@ class NewsService {
     getNewsLink(catagoryId,agencyId){
         return axios.get(NEWS_API_BASE_URL+"/news/get?catagory_id="+catagoryId+"&agency_id="+agencyId);
     }
-
+    getCatagoryUnderAgency(agencyId){
+        return axios.get(NEWS_API_BASE_URL+"/news/get/catagory?agency_id="+agencyId);
+    }
     addAgencyFeed(catagoryId,agencyId,feed_url){
         return axios.post(NEWS_API_BASE_URL+"/news/add/agencyfeed?catagory_id="+catagoryId+"&agency_id="+agencyId+"&feed_url="+feed_url);
     }
 
-    addNews(){
-        return axios.post(NEWS_API_BASE_URL+"")
+    addNews(catagoryId,agencyId,newsDate,newsDesc,newsTitle,newsLink){
+        return axios.post(NEWS_API_BASE_URL+"/news/post/?catagory_id="+catagoryId+"&agency_id="+agencyId+"&news_date="+newsDate+"&news_desc="+newsDesc+"&news_title="+newsTitle+"&news_link="+newsLink)
     }
 
     deleteAllNews(){
