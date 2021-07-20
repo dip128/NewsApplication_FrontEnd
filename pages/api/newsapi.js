@@ -2,7 +2,7 @@ import axios from 'axios';
 import catagory from '../add/catagory';
 
 const NEWS_API_BASE_URL = "http://localhost:8080"
-
+const PROXY_URL = "https://cors-anywhere.herokuapp.com"
 
 class NewsService {
 
@@ -43,7 +43,9 @@ class NewsService {
     addNews(catagoryId,agencyId,newsDate,newsDesc,newsTitle,newsLink){
         return axios.post(NEWS_API_BASE_URL+"/news/post/?catagory_id="+catagoryId+"&agency_id="+agencyId+"&news_date="+newsDate+"&news_desc="+newsDesc+"&news_title="+newsTitle+"&news_link="+newsLink)
     }
-
+    NewsFromRss(url){
+        return axios.get(PROXY_URL+"/"+url)
+    }
     deleteAllNews(){
         return axios.delete(NEWS_API_BASE_URL+"/news/delete/all")
     }
