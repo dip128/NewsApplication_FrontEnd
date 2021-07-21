@@ -222,7 +222,7 @@ export default function index() {
                 <input className="submitbutton" type='submit'  value='Search'/>
             </form> : <div><h1>{heading}</h1><button className="submitbutton" onClick={e => { seeNews(e)}}>See the news</button></div>}
             {newsarr.length>0 ? <div>{newsarr.map((item) =>(
-                <NewsComp news_title={item.news_title} href={item.news_link} count={item.click_count} desc={item.news_desc} date={item.news_date}/>
+                <NewsComp news_id={item.news_id} news_title={item.news_title} href={item.news_link} count={item.click_count} desc={item.news_desc} date={item.news_date}/>
             ))}</div>:<div></div>}
         </div>
     )

@@ -50,6 +50,13 @@ class NewsService {
     getNewsByAgencyandCatagory(catagoryId,agencyId){
        return axios.get(NEWS_API_BASE_URL+"/get/news/"+catagoryId+"/"+agencyId)
     }
+    updateClickCount(newsId,clickp){
+        return axios.put(NEWS_API_BASE_URL+"/news/update/click/count/?news_id="+newsId+"&click_count="+clickp)
+    }
+
+    getNewsReport(){
+        return axios.get(NEWS_API_BASE_URL+"/get/report")
+    }
 
     deleteAllNews(){
         return axios.delete(NEWS_API_BASE_URL+"/news/delete/all")
