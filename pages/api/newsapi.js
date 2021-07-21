@@ -46,6 +46,11 @@ class NewsService {
     NewsFromRss(url){
         return axios.get(PROXY_URL+"/"+url)
     }
+
+    getNewsByAgencyandCatagory(catagoryId,agencyId){
+       return axios.get(NEWS_API_BASE_URL+"/get/news/"+catagoryId+"/"+agencyId)
+    }
+
     deleteAllNews(){
         return axios.delete(NEWS_API_BASE_URL+"/news/delete/all")
     }

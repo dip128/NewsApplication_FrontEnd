@@ -2,6 +2,10 @@
 import React, { useEffect,useState } from 'react'
 import NewsService from '../api/newsapi'
 import convert from 'xml-js'
+import NewsComp from '../../comps/NewsComp';
+import { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css';
 
 
 export default function index() {
@@ -11,6 +15,8 @@ export default function index() {
 
     const[heading,setheading] = useState("")
     const[newsarr,setnewsarr] = useState([])
+    const[newscatid,setnewscatid] = useState(0)
+    const[newsageid,setnewsageid] = useState(0)
 
     const[newstitle,setnewstitle] = useState("")
     const[newsdesc,setnewsdesc] = useState("")
@@ -116,8 +122,41 @@ export default function index() {
                             }
                         })
                          NewsService.addNews(catid,ageid,newsdate,des,t,l)
+                         .then((res) =>{
+
+                            if(res.status===200){
+                                store.addNotification({
+                                    title: 'Added',
+                                    message: 'New News has been added in the database',
+                                    insert: "top",
+                                    type: 'success',                         // 'default', 'success', 'info', 'warning'
+                                    container: 'top-right',                // where to position the notifications
+                                    animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+                                    animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+                                    dismiss: {
+                                    duration: 4000
+                                    }
+                            })
+                        }
+                         })
+
+                        .catch(err =>{
+                            console.log(err)
+                            store.addNotification({
+                                title: 'Oops',
+                                message: 'Sorry! Faced certain issue with the server',
+                                insert: "top",
+                                type: 'warning',                         
+                                container: 'top-right',                
+                                animationIn: ["animated", "fadeIn"],     
+                                animationOut: ["animated", "fadeOut"],   
+                                dismiss: {
+                                duration: 4000
+                                }
+                    })
+                        }) 
                     }
-                    // if(t!= undefined && d!=undefined && l!= undefined)
+                    
                        
                 })
                 
@@ -131,9 +170,35 @@ export default function index() {
              console.log(err)
          })
          
-         console.log(rss)
+
+        setnewsageid(ageid)
+        setnewscatid(catid)
+
+        
          setageid(0)
          setcatid(0)
+    }
+
+    const seeNews = (e) =>{
+        NewsService.getNewsByAgencyandCatagory(newscatid,newsageid)
+        .then(res => {
+            return res;
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+
+        .then((res) =>{
+            //console.log(res.data)  
+            let news = res.data.map((item) =>{
+                return {news_id : item.news_id, news_title:item.news_title, news_desc:item.news_desc, news_date:item.news_date, news_link:item.news_link, click_count:item.click_count}
+            })
+            //console.log(news)
+            setnewsarr([{news_id:'',news_title:'',news_desc:'',news_date:'',news_link:'',click_count:''}].concat(news))
+             
+        })
+
+        
     }
 
     return (
@@ -155,8 +220,10 @@ export default function index() {
             <br/> <br/>
              <br/> <br/>
                 <input className="submitbutton" type='submit'  value='Search'/>
-            </form> : <h1>{heading}</h1>}
-
+            </form> : <div><h1>{heading}</h1><button className="submitbutton" onClick={e => { seeNews(e)}}>See the news</button></div>}
+            {newsarr.length>0 ? <div>{newsarr.map((item) =>(
+                <NewsComp news_title={item.news_title} href={item.news_link} count={item.click_count} desc={item.news_desc} date={item.news_date}/>
+            ))}</div>:<div></div>}
         </div>
     )
 }
