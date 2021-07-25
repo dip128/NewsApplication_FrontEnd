@@ -11,6 +11,9 @@ export default function remove() {
         .then(res =>{
             console.log(res)
             if(res.status===200){
+                localStorage.removeItem('catagory_id')
+                localStorage.removeItem('agency_id')
+                localStorage.removeItem('heading')
                 console.log("All News Deleted")
                 store.addNotification({
                     title: 'Deleted',

@@ -32,6 +32,9 @@ export default function index() {
     const [validationError , setvalidationError] = useState("")
 
     useEffect(() =>{
+        if(localStorage.getItem('heading')!=null){
+            setheading(localStorage.getItem('heading'))
+        }
         NewsService.getAgencyAll()
         .then(res =>{
             return res;
@@ -74,9 +77,8 @@ export default function index() {
 
     const searchNews = (e) =>{
 
-        
-
          e.preventDefault();
+         
          NewsService.getNewsLink(catid,ageid)
          .then(res =>{
             // console.log(res.data)  
@@ -95,6 +97,9 @@ export default function index() {
                     if(item.name==='title'){
                         
                         setheading(item.elements[0].text)
+                        localStorage.setItem('heading',item.elements[0].text)
+                        localStorage.setItem('catagory_id',catid)
+                        localStorage.setItem('agency_id',ageid)
                     }
                     if(item.name==='item'){
                         item.elements.map((i)=>{
@@ -180,7 +185,28 @@ export default function index() {
     }
 
     const seeNews = (e) =>{
-        NewsService.getNewsByAgencyandCatagory(newscatid,newsageid)
+        if(localStorage.getItem('catagory_id')!=null && localStorage.getItem('agency_id')!=null){
+                NewsService.getNewsByAgencyandCatagory(localStorage.getItem('catagory_id'),localStorage.getItem('agency_id'))
+                .then(res => {
+                    return res;
+                    console.log(res)
+                })
+                .catch(err =>{
+                    console.log(err)
+                })
+
+                .then((res) =>{
+                    //console.log(res.data)  
+                    let news = res.data.map((item) =>{
+                        return {news_id : item.news_id, news_title:item.news_title, news_desc:item.news_desc, news_date:item.news_date, news_link:item.news_link, click_count:item.click_count}
+                    })
+                    //console.log(news)
+                    setnewsarr([{news_id:'',news_title:'',news_desc:'',news_date:'',news_link:'',click_count:''}].concat(news))
+                    
+                })
+        }
+        else
+        {NewsService.getNewsByAgencyandCatagory(newscatid,newsageid)
         .then(res => {
             return res;
         })
@@ -196,7 +222,7 @@ export default function index() {
             //console.log(news)
             setnewsarr([{news_id:'',news_title:'',news_desc:'',news_date:'',news_link:'',click_count:''}].concat(news))
              
-        })
+        })}
 
         
     }
@@ -222,7 +248,7 @@ export default function index() {
                 <input className="submitbutton" type='submit'  value='Search'/>
             </form> : <div><h1>{heading}</h1><button className="submitbutton" onClick={e => { seeNews(e)}}>See the news</button></div>}
             {newsarr.length>0 ? <div>{newsarr.map((item) =>(
-                <NewsComp news_id={item.news_id} news_title={item.news_title} href={item.news_link} count={item.click_count} desc={item.news_desc} date={item.news_date}/>
+                <NewsComp key={item.news_id} news_id={item.news_id} news_title={item.news_title} href={item.news_link} count={item.click_count} desc={item.news_desc} date={item.news_date}/>
             ))}</div>:<div></div>}
         </div>
     )

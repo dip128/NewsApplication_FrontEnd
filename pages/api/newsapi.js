@@ -30,6 +30,10 @@ class NewsService {
         return axios.post(NEWS_API_BASE_URL+"/news/add/agency/"+agency+"?logo="+link);
     }
 
+    getAgencyById(agencyId){
+        return axios.get(NEWS_API_BASE_URL+"/news/get/agency/"+agencyId)
+    }
+
     getNewsLink(catagoryId,agencyId){
         return axios.get(NEWS_API_BASE_URL+"/news/get?catagory_id="+catagoryId+"&agency_id="+agencyId);
     }

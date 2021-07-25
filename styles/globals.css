@@ -60,32 +60,6 @@ nav li.btn:hover {
   border-radius: 6px;
 }
 
-.site-footer {
-  background-color: #f2f2f2;
-  padding: 45px 0 20px;
-  font-size: 15px;
-  line-height: 24px;
-  color: #444;
-  position: absolute;
-
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-}
-
-.site-footer a {
-  color: #737373;
-}
-
-.site-footer a:hover {
-  color: #3366cc;
-  text-decoration: none;
-}
-.copyright-text {
-  margin: 0;
-}
-
 .customebutton {
   background-color: #83294b; /* Green */
   border: none;

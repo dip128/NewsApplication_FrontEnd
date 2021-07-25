@@ -17,7 +17,7 @@ export default function catagory() {
                 res.data.map(items => {
                     cat.push(items.catagory_title)
                 })
-                console.log(cat)
+                //console.log(cat)
                 setallcat(cat)
                 
             })
@@ -29,7 +29,7 @@ export default function catagory() {
 
 
     const addCatagory =(e) =>{
-        console.log(catagory)
+        //console.log(catagory)
         setcouter(counter+1)
         e.preventDefault();
         console.log(allcat)
@@ -94,7 +94,7 @@ export default function catagory() {
             <h1>Add Catagory</h1>
              <br/> <br/>
             <form  onSubmit={e => { addCatagory(e)}}>
-                <label for="text-input">Catagory -</label>
+                <label htmlFor="text-input">Catagory -</label>
                 <br/> <br/>
                 <input className="input" id="text-input" type="text" placeholder="Enter Catagory" value={catagory} onChange={e => setcatagory(e.target.value)} required/>
                 <br/> <br/>

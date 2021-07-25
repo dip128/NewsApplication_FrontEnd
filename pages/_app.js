@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
       <ReactNotifications/>
       <Component {...pageProps} />
       
-      {/* <Footer/> */}
+       <Footer/> 
     </div>
   )
 }
