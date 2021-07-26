@@ -184,6 +184,13 @@ export default function index() {
          setcatid(0)
     }
 
+    const changecatagory = (e) =>{
+        localStorage.removeItem('heading')
+        localStorage.removeItem('catagory_id')
+        localStorage.removeItem('agency_id')
+       window.location.reload(false)
+    }
+
     const seeNews = (e) =>{
         if(localStorage.getItem('catagory_id')!=null && localStorage.getItem('agency_id')!=null){
                 NewsService.getNewsByAgencyandCatagory(localStorage.getItem('catagory_id'),localStorage.getItem('agency_id'))
@@ -246,7 +253,9 @@ export default function index() {
             <br/> <br/>
              <br/> <br/>
                 <input className="submitbutton" type='submit'  value='Search'/>
-            </form> : <div><h1>{heading}</h1><button className="submitbutton" onClick={e => { seeNews(e)}}>See the news</button></div>}
+            </form> : <div><h1>{heading}</h1><button className="submitbutton" onClick={e => { seeNews(e)}}>See the news</button>
+                <button className="submitbutton" style={{marginLeft:'25px'}} onClick={e => { changecatagory(e)}}>Change Catagory</button>
+            </div>}
             {newsarr.length>0 ? <div>{newsarr.map((item) =>(
                 <NewsComp key={item.news_id} news_id={item.news_id} news_title={item.news_title} href={item.news_link} count={item.click_count} desc={item.news_desc} date={item.news_date}/>
             ))}</div>:<div></div>}
