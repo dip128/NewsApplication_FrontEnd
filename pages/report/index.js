@@ -2,6 +2,19 @@ import React, { useEffect,useRef } from 'react'
 import { useState } from 'react'
 import NewsService from '../api/newsapi'
 import ReactToPrint from 'react-to-print';
+import { motion } from 'framer-motion';
+import SubmitButtonStyle from '../../comps/atom/button/Submit/SubmitButton.module.css'
+
+const postVariants = {
+    initial: { scale: 0, x: 100, opacity: 0 },
+    enter: { scale: 1, x: 1, opacity: 1, transition: { duration: 0.7, ease: [0.48, 0.15, 0.25, 0.96] } },
+    exit: {
+      scale: 0,
+      x: -1000,
+      opacity: 0,
+      transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] }
+    }
+  };
 
 export default function index() {
 
@@ -35,10 +48,10 @@ export default function index() {
     }
 
     return (
-        <div className="container">
+        <motion.div className="container" variants={postVariants} initial='initial' animate='enter' exit='exit'>
 
            <ReactToPrint
-                trigger={() => <button className="submitbutton container" style={{marginBottom:'25px',float:'right'}}>Print this out!</button>}
+                trigger={() => <button className={SubmitButtonStyle.submitbutton} style={{float:'right' ,margin:'10px'}}>Print The Report</button> }
                 content={() => componentRef.current}
             />
 
@@ -69,6 +82,6 @@ export default function index() {
                         }
             })}
              </table>    
-        </div>
+        </motion.div>
     )
 }

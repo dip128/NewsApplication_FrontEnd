@@ -3,7 +3,7 @@ import NewsService from '../api/newsapi'
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
-
+import SubmitButtonStyle from '../../comps/atom/button/Submit/SubmitButton.module.css'
 export default function catagory() {
 
     const[catagory,setcatagory] = useState("")
@@ -98,7 +98,7 @@ export default function catagory() {
                 <br/> <br/>
                 <input className="input" id="text-input" type="text" placeholder="Enter Catagory" value={catagory} onChange={e => setcatagory(e.target.value)} required/>
                 <br/> <br/>
-                <input className="submitbutton" type='submit'  value='Add Catagory'/>
+                <input className={SubmitButtonStyle.submitbutton} type='submit'  value='Add Catagory'/>
             </form>
             
 

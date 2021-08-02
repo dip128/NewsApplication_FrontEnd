@@ -2,11 +2,23 @@
 import React, { useEffect,useState } from 'react'
 import NewsService from '../api/newsapi'
 import convert from 'xml-js'
-import NewsComp from '../../comps/NewsComp';
+import NewsComp from '../../comps/molecule/NewsComp/NewsComp.js';
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
+import { motion } from 'framer-motion';
+import SubmitButtonStyle from '../../comps/atom/button/Submit/SubmitButton.module.css'
 
+const postVariants = {
+    initial: { scale: 0, x: -1000, opacity: 0 },
+    enter: { scale: 1, x: 1, opacity: 1, transition: { duration: 0.7, ease: [0.48, 0.15, 0.25, 0.96] } },
+    exit: {
+      scale: 0,
+      x: -1000,
+      opacity: 0,
+      transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] }
+    }
+  };
 
 export default function index() {
 
@@ -235,7 +247,7 @@ export default function index() {
     }
 
     return (
-        <div className="container">
+        <motion.div className="container" variants={postVariants} initial='initial' animate='enter' exit='exit'>
            Search News By Agency and Catagory
            <br/><br/>
            <div style={{color: 'red', marginTop: '5px'}}>
@@ -252,13 +264,13 @@ export default function index() {
             </select>
             <br/> <br/>
              <br/> <br/>
-                <input className="submitbutton" type='submit'  value='Search'/>
-            </form> : <div><h1>{heading}</h1><button className="submitbutton" onClick={e => { seeNews(e)}}>See the news</button>
-                <button className="submitbutton" style={{marginLeft:'25px'}} onClick={e => { changecatagory(e)}}>Change Catagory</button>
+                <input className={SubmitButtonStyle.submitbutton} type='submit'  value='Search'/>
+            </form> : <div><h1>{heading}</h1><button className={SubmitButtonStyle.submitbutton} onClick={e => { seeNews(e)}}>See the news</button>
+                <button className={SubmitButtonStyle.submitbutton} style={{marginLeft:'25px'}} onClick={e => { changecatagory(e)}}>Change Catagory</button>
             </div>}
             {newsarr.length>0 ? <div>{newsarr.map((item) =>(
                 <NewsComp key={item.news_id} news_id={item.news_id} news_title={item.news_title} href={item.news_link} count={item.click_count} desc={item.news_desc} date={item.news_date}/>
             ))}</div>:<div></div>}
-        </div>
+        </motion.div>
     )
 }

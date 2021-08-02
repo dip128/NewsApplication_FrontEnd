@@ -1,5 +1,18 @@
 import Head from 'next/head'
+import { motion } from 'framer-motion';
 
+
+
+const postVariants = {
+  initial: { scale: 0, x: -1000, opacity: 0 },
+  enter: { scale: 1, x: 1, opacity: 1, transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] } },
+  exit: {
+    scale: 0,
+    x: -1000,
+    opacity: 0,
+    transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] }
+  }
+};
 
 export default function Home() {
   return (
@@ -10,11 +23,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         </Head>
       
-        <div className="container">
+        <motion.div className="container" variants={postVariants} initial='initial' animate='enter' exit='exit'>
             <h1>About Us</h1>
              <p>This is an NewsFeed Application.<br/>
                 You can see news by NewsAgency,catagory,Date</p>
-        </div>
+        </motion.div>
         
       
     </div>

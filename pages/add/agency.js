@@ -3,7 +3,7 @@ import NewsService from '../api/newsapi'
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
-
+import SubmitButtonStyle from '../../comps/atom/button/Submit/SubmitButton.module.css'
 
 
 export default function agency() {
@@ -100,7 +100,7 @@ export default function agency() {
                  <br/> <br/>
                  <input type="text" placeholder="Enter logo image URL" value={agencyUrl} onChange={e => setagencyUrl(e.target.value)} required/>
                  <br/> <br/>
-                <input className="submitbutton" type='submit'  value='Add Agency'/>
+                <input className={SubmitButtonStyle.submitbutton} type='submit'  value='Add Agency'/>
             </form>
             
 

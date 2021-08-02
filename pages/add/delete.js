@@ -3,6 +3,26 @@ import NewsService from '../api/newsapi'
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
+import DeleteButtonStyle from '../../comps/atom/button/DeleteButton/DeleteButton.module.css'
+import { motion } from 'framer-motion';
+import { transitions } from 'react-alert';
+import { spring } from 'popmotion';
+
+const buttonVariant ={
+    hidden :{
+        x:"-100vw",
+        opacity:0
+    },
+    visible:{
+        x:0,
+        opacity:1,
+        transitions:{
+            type:spring,
+            delay:0.5
+        }
+    }
+}
+
 export default function remove() {
     
     const handleDelete = (e) => {
@@ -65,7 +85,11 @@ export default function remove() {
         <div className="container">
             <h1 >Delete all News</h1>
             <p>If you want to Delete all the news from the database Please enter the below buttton</p>
-            <button type="delete" className="customebutton" onClick={(e) => handleDelete(e)}>Delete</button>
+            <motion.button  className={DeleteButtonStyle.deletebutton} onClick={(e) => handleDelete(e)}
+                variants={buttonVariant}
+                initial="hidden"
+                animate="visible"
+            >Delete</motion.button>
             
         </div>
     )

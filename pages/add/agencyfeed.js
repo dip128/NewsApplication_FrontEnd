@@ -3,6 +3,7 @@ import NewsService from '../api/newsapi'
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
+import SubmitButtonStyle from '../../comps/atom/button/Submit/SubmitButton.module.css'
 
 export default function agencyfeed() {
 
@@ -115,7 +116,7 @@ export default function agencyfeed() {
            
                 <input type="text" placeholder="Add Agency URL" value={feed_url} onChange={e => {setFeedUrl(e.target.value)}} required/>
                  <br/> <br/>
-                <input className="submitbutton" type='submit'  value='Add URL'/>
+                <input className={SubmitButtonStyle.submitbutton} type='submit'  value='Add URL'/>
             </form>
             
         </div>

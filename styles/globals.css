@@ -24,74 +24,14 @@ a {
   margin: 0 auto;
 }
 
-/* navbar */
-nav {
-  margin: 20px auto 40px;
-  display: flex;
-  align-items: center;
-}
-nav h1 {
-  margin-left: 10px;
-}
-nav ul {
-  margin-left: auto;
-  list-style-type: none;
-  padding: 0;
-}
-nav li {
-  display: inline-block;
-  margin-left: 16px;
-}
-nav li.btn {
-  padding: 10px 16px;
-  border: 2px solid var(--primary);
-  border-radius: 30px;
-  font-weight: 600;
-  color: var(--primary);
-  cursor: pointer;
-}
-nav li.btn:hover {
-  color: white;
-  background: var(--primary);
-}
 
 /* banner */
 .banner img {
   border-radius: 6px;
 }
 
-.customebutton {
-  background-color: #83294b; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
-}
 
-.customebutton:hover {
-  background-color: #eb2929; /* Green */
-  color: white;
-}
-.submitbutton {
-  background-color: #1f3375; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
-}
 
-.submitbutton:hover {
-  background-color: #91dfe9; /* Green */
-  color: white;
-}
 
 input {
   width: 100%;

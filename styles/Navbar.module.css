@@ -1,0 +1,31 @@
+
+/* navbar */
+.navbar {
+    margin: 20px auto 40px;
+    display: flex;
+    align-items: center;
+  }
+.h1 {
+    margin-left: 10px;
+  }
+.u {
+    margin-left: auto;
+    list-style-type: none;
+    padding: 0;
+  }
+.l {
+    display: inline-block;
+    margin-left: 16px;
+  }
+  /* nav li.btn {
+    padding: 10px 16px;
+    border: 2px solid var(--primary);
+    border-radius: 30px;
+    font-weight: 600;
+    color: var(--primary);
+    cursor: pointer;
+  }
+  nav li.btn:hover {
+    color: white;
+    background: var(--primary);
+  } */

@@ -2,10 +2,10 @@ import Footer from '../comps/Footer'
 import Navbar from '../comps/Navbar'
 import '../styles/globals.css'
 import ReactNotifications from 'react-notifications-component';
+import { AnimatePresence } from 'framer-motion'
 
 
-
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps,router}) {
 
 
 
@@ -13,8 +13,9 @@ function MyApp({ Component, pageProps }) {
     <div>
       <Navbar />
       <ReactNotifications/>
-      <Component {...pageProps} />
-      
+      <AnimatePresence exitBeforeEnter>
+      <Component {...pageProps} key={router.route}/>
+      </AnimatePresence>
        <Footer/> 
     </div>
   )
