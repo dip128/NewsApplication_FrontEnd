@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import NavbarStyle from '../styles/Navbar.module.css'
+import NavbarStyle from '../../styles/Navbar.module.css'
 import { motion } from 'framer-motion'
 import { transitions } from 'react-alert'
 

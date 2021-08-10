@@ -5,7 +5,7 @@ import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
 import SubmitButtonStyle from '../../comps/atom/button/Submit/SubmitButton.module.css'
 
-export default function agencyfeed() {
+export default function Agencyfeed() {
 
     const[cats,setcats] = useState([])
     const[agens,setagens] = useState([])

@@ -6,7 +6,7 @@ import 'animate.css';
 import SubmitButtonStyle from '../../comps/atom/button/Submit/SubmitButton.module.css'
 
 
-export default function agency() {
+export default function Agency() {
 
     const[agency,setagency] = useState("")
     const[counter,setcouter] = useState(0);

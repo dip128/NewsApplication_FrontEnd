@@ -13,7 +13,7 @@ const postVariants = {
     }
   };
 
-export default function index() {
+export default function Index() {
     return (
         <motion.div className="container" variants={postVariants} initial='initial' animate='enter' exit='exit'>
             <h1>Add News Sources </h1>

@@ -8,6 +8,7 @@ import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
 import { motion } from 'framer-motion';
 import SubmitButtonStyle from '../../comps/atom/button/Submit/SubmitButton.module.css'
+import useLocalStorage from '../../customHooks/useLocalStorage';
 
 const postVariants = {
     initial: { scale: 0, x: -1000, opacity: 0 },
@@ -20,12 +21,14 @@ const postVariants = {
     }
   };
 
-export default function index() {
+export default function Index() {
+
+    const[heading,setheading]=useLocalStorage('heading',"")
 
     
-    const[rss,setrss] = useState(" ")
+    const[rss,setrss] = useState("")
 
-    const[heading,setheading] = useState("")
+    //const[heading,setheading] = useState("")
     const[newsarr,setnewsarr] = useState([])
     const[newscatid,setnewscatid] = useState(0)
     const[newsageid,setnewsageid] = useState(0)
@@ -44,8 +47,8 @@ export default function index() {
     const [validationError , setvalidationError] = useState("")
 
     useEffect(() =>{
-        if(localStorage.getItem('heading')!=null){
-            setheading(localStorage.getItem('heading'))
+        if(heading!=null || heading !=""){
+            setheading(heading)
         }
         NewsService.getAgencyAll()
         .then(res =>{
@@ -109,7 +112,7 @@ export default function index() {
                     if(item.name==='title'){
                         
                         setheading(item.elements[0].text)
-                        localStorage.setItem('heading',item.elements[0].text)
+                        //localStorage.setItem('heading',item.elements[0].text)
                         localStorage.setItem('catagory_id',catid)
                         localStorage.setItem('agency_id',ageid)
                     }

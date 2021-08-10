@@ -4,7 +4,7 @@ import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
 import SubmitButtonStyle from '../../comps/atom/button/Submit/SubmitButton.module.css'
-export default function catagory() {
+export default function Catagory() {
 
     const[catagory,setcatagory] = useState("")
     const[counter,setcouter] = useState(0);

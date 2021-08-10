@@ -1,5 +1,5 @@
-import Footer from '../comps/Footer'
-import Navbar from '../comps/Navbar'
+import Footer from '../comps/organism/Footer'
+import Navbar from '../comps/organism/Navbar'
 import '../styles/globals.css'
 import ReactNotifications from 'react-notifications-component';
 import { AnimatePresence } from 'framer-motion'

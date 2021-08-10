@@ -23,7 +23,7 @@ const buttonVariant ={
     }
 }
 
-export default function remove() {
+export default function Remove() {
     
     const handleDelete = (e) => {
         console.log("Delete clicked")

@@ -16,7 +16,7 @@ const postVariants = {
     }
   };
 
-export default function index() {
+export default function Index() {
 
   const componentRef = useRef();
 
